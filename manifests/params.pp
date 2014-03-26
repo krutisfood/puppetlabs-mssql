@@ -18,6 +18,8 @@
 # $ascollation
 # $sqlcollation
 # $admin
+# $securitymode
+# $sapassword
 #
 class mssql::params {
   $instancename   = 'MSSQLSERVER'
@@ -34,4 +36,6 @@ class mssql::params {
   $ascollation    = 'Latin1_General_CI_AS'
   $sqlcollation   = 'SQL_Latin1_General_CP1_CI_AS'
   $admin          = 'Administrator'
+  $securitymode   = ''
+  $sapassword     = 'sqlsa2008demo'
 }

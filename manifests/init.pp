@@ -28,6 +28,8 @@ class mssql (
   $ascollation    = $mssql::params::ascollation,
   $sqlcollation   = $mssql::params::sqlcollation,
   $admin          = $mssql::params::admin,
+  $securitymode   = $mssql::params::securitymode,
+  $sapassword     = $mssql::params::sapassword
 ) inherits mssql::params {
 
   # validation
@@ -79,11 +81,11 @@ class mssql (
   }
 
   exec { 'install_mssql2008':
-    command   => "${media}\\setup.exe /Action=Install /IACCEPTSQLSERVERLICENSETERMS /QS /CONFIGURATIONFILE=C:\\sql2008install.ini /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\"",
+    command   => "${media}\\setup.exe /Action=Install /IACCEPTSQLSERVERLICENSETERMS /QS /CONFIGURATIONFILE=C:\\sql2008install.ini /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\" /SAPWD=\"${sapassword}\"",
     cwd       => $media,
     path      => $media,
     logoutput => true,
-    creates   => $instancedir,
+    creates   => "${instancedir}\\MSSQL10_50.${instancename}",
     timeout   => 1200,
     require   => [ File['C:\sql2008install.ini'],
                    Dism['NetFx3'] ],
