@@ -68,7 +68,7 @@ class mssql (
   }
   user { 'SQLSVC':
     comment  => 'SQL 2008 Service.',
-    groups   => 'Administrators',
+    #groups   => 'Administrators', # Groups doesn't appear to work at this stage in windows
     password => $sqlsvcpassword,
   }
 
