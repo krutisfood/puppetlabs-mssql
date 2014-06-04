@@ -51,7 +51,7 @@ class mssql (
 
   User {
     ensure   => present,
-    before => Exec['install_mssql2008'],
+    before   => Package[$::mssql::params::installs_package]
   }
 
   user { 'SQLAGTSVC':
@@ -84,7 +84,7 @@ class mssql (
       ensure => present,
   }
 
-  package { 'Microsoft SQL Server 2008 R2 (64-bit)':
+  package { $::mssql::params::installs_package:
     source          => "${media}\\setup.exe",
     install_options => ["/Action=Install /IACCEPTSQLSERVERLICENSETERMS /QS /CONFIGURATIONFILE=C:\\sql2008install.ini /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\" /SAPWD=\"${sapassword}\" /SQLSYSADMINACCOUNTS=\"${admin}\""],
     #cwd            => $media,
