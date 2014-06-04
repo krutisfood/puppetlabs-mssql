@@ -48,6 +48,9 @@ class mssql (
   validate_string($ascollation)
   validate_string($sqlcollation)
   validate_string($admin)
+  notify { 'mssql media':
+    message => "Installing mssql from ${media}"
+  }
 
   User {
     ensure   => present,
