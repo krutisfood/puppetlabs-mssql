@@ -49,7 +49,7 @@ class mssql (
   validate_string($sqlcollation)
   validate_string($admin)
   notify { 'mssql media':
-    message => "Installing mssql from ${media}"
+    notify => "Try running ${media} /Action=Install /IACCEPTSQLSERVERLICENSETERMS /QS /CONFIGURATIONFILE=C:\\sql2008install.ini /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\" /SAPWD=\"${sapassword}\" /SQLSYSADMINACCOUNTS=\"${admin}\""
   }
 
   User {
