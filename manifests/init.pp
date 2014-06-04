@@ -89,7 +89,7 @@ class mssql (
 
   package { $::mssql::params::installs_package:
     source          => "${media}\\setup.exe",
-    install_options => ["/Action=Install /IACCEPTSQLSERVERLICENSETERMS /QS /CONFIGURATIONFILE=C:\\sql2008install.ini /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\" /SAPWD=\"${sapassword}\" /SQLSYSADMINACCOUNTS=\"${admin}\""],
+    install_options => ["/Action=Install /IACCEPTSQLSERVERLICENSETERMS /Q /CONFIGURATIONFILE=C:\\sql2008install.ini /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\" /SAPWD=\"${sapassword}\" /SQLSYSADMINACCOUNTS=\"${admin}\""],
     #cwd            => $media,
     provider        => 'windows',
     #path           => $media,
