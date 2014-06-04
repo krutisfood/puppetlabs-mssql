@@ -85,14 +85,14 @@ class mssql (
   }
 
   package { 'Microsoft SQL Server 2008 R2 (64-bit)':
-    source          => "${media}\\setup.exe"
-    install_options => ["/Action=Install /IACCEPTSQLSERVERLICENSETERMS /QS /CONFIGURATIONFILE=C:\\sql2008install.ini /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\" /SAPWD=\"${sapassword}\""],
-    #cwd       => $media,
-    provider  => 'windows',
-    #path      => $media,
-    #logoutput => true,
-    #creates   => "${instancedir}\\MSSQL10_50.${instancename}",
-    #timeout   => 1200,
-    require   => [ Dism['NetFx3'] ], 
+    source          => "${media}\\setup.exe",
+    install_options => ["/Action=Install /IACCEPTSQLSERVERLICENSETERMS /QS /CONFIGURATIONFILE=C:\\sql2008install.ini /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\" /SAPWD=\"${sapassword}\" /SQLSYSADMINACCOUNTS=\"${admin}\""],
+    #cwd            => $media,
+    provider        => 'windows',
+    #path           => $media,
+    #logoutput      => true,
+    #creates        => "${instancedir}\\MSSQL10_50.${instancename}",
+    #timeout        => 1200,
+    require         => [ Dism['NetFx3'] ], 
   }
 }
